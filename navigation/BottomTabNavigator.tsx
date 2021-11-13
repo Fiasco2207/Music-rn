@@ -1,4 +1,4 @@
-import { FontAwesome, Entypo, EvilIcons, MaterialCommunityIcons } from '@expo/vector-icons';
+import { FontAwesome, Entypo, EvilIcons, MaterialCommunityIcons, MaterialIcons, FontAwesome5 } from '@expo/vector-icons';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { createStackNavigator } from '@react-navigation/stack';
 import * as React from 'react';
@@ -12,6 +12,10 @@ import { TabOneParamList, TabTwoParamList } from '../types';
 import { RootTabParamList } from '../types';
 import AlbumScreen from "../screens/AlbumScreen";
 import colors from '../config/colors';
+import AudioList from '../app/screens/AudioList';
+import Player from '../app/screens/Player';
+import AppNavigator from '../app/navigation/AppNavigator';
+import PlayerWidget from '../components/PlayerWidget';
 
 const BottomTab = createBottomTabNavigator<RootTabParamList>();
 
@@ -22,25 +26,25 @@ function BottomTabNavigator() {
     <BottomTab.Navigator
       initialRouteName="TabOne"
       screenOptions={{
-        tabBarActiveTintColor: colors.white, 
+        tabBarActiveTintColor: colors.white,
         headerShown: false,
-        tabBarStyle: {backgroundColor: colors.bottomTab, height: 55}
+        tabBarStyle: { backgroundColor: colors.bottomTab, height: 55 }
       }}
-      >
+    >
       <BottomTab.Screen
         name="Home"
         component={TabOneNavigator}
         options={{
           title: 'Home',
-          tabBarIcon: ({ size }) => <Entypo name="home" color={colors.white} size={size} style={{marginBottom: -3}} />,
+          tabBarIcon: ({ size }) => <Entypo name="home" color={colors.white} size={size} style={{ marginBottom: -3 }} />,
         }}
       />
       <BottomTab.Screen
         name="Search"
-        component={TabTwoScreen}
+        component={AppNavigator}
         options={{
           title: 'Search',
-          tabBarIcon: ({ color }) => <EvilIcons name="search" color={colors.white} size={30} style={{marginBottom: -3}} />,
+          tabBarIcon: ({ color }) => <EvilIcons name="search" color={colors.white} size={30} style={{ marginBottom: -3 }} />,
         }}
       />
       {/*
@@ -52,6 +56,24 @@ function BottomTabNavigator() {
           tabBarIcon: ({ color }) => <MaterialCommunityIcons name="radio" color={color} size={30} style={{marginBottom: -3}} />,
         }}
       />*/}
+      <BottomTab.Screen
+        name='AudioList'
+        component={AudioList}
+        options={{
+          tabBarIcon: ({ color, size }) => (
+            <MaterialIcons name='headset' size={size} color={color} />
+          ),
+        }}
+      />
+      <BottomTab.Screen
+        name='Player'
+        component={Player}
+        options={{
+          tabBarIcon: ({ color, size }) => (
+            <FontAwesome5 name='compact-disc' size={size} color={color} />
+          ),
+        }}
+      />
     </BottomTab.Navigator>
   );
 }
@@ -66,16 +88,17 @@ function TabOneNavigator() {
       <TabOneStack.Screen
         name="TabOneScreen"
         component={HomeScreen}
-        options={{ headerTitle: 'Home', headerShown: false,}}
-        
+        options={{ headerTitle: 'Home', headerShown: false, }}
+
       />
       <TabOneStack.Screen
         name="AlbumScreen"
         component={AlbumScreen}
-        options={{ headerTitle: 'Album', headerShown: false,}}
+        options={{ headerTitle: 'Album', headerShown: false, }}
       />
     </TabOneStack.Navigator>
-    
+
+
   );
 }
 

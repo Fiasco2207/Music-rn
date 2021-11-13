@@ -9,7 +9,7 @@ const styles = StyleSheet.create({
         flexDirection:'row',
         marginVertical: 4,
         marginHorizontal: 25,
-        justifyContent: 'space-between'
+        justifyContent: 'space-between',
     },
   /*   firstContainer:{
         marginLeft: 10,
@@ -23,6 +23,7 @@ const styles = StyleSheet.create({
        padding: 3
     },
     image:{
+        right: 2,
         alignSelf:"center",
         borderRadius: 36,
         width:  43,

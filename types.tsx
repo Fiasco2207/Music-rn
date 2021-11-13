@@ -56,7 +56,7 @@ export type Album = {
   by: string;
   numberOfLikes: number;
   imageUri: string;
-  artistsHeadline: string;
+  artistHeadline: string;
 }
 
 export type Song = {

@@ -1,9 +1,10 @@
 import { StyleSheet } from "react-native";
+import colors from "../../config/colors";
 
 const styles = StyleSheet.create({
     container:{
         width: 175,
-        margin: 10
+        margin: 10,
     },
     image:{
         width: "100%",
@@ -11,8 +12,10 @@ const styles = StyleSheet.create({
         borderRadius: 100
     },
     text:{
-        color: 'white',
+        color: colors.white,
         marginTop: 10,
+        fontSize: 15,
+        paddingLeft: 20
     }
 });
 
